@@ -60,6 +60,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
+
         <pluginRepository>
             <id>vaadin-prereleases</id>
             <url>
@@ -132,6 +133,7 @@
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
