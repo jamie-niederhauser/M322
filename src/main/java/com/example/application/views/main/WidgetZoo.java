@@ -100,18 +100,18 @@ public class WidgetZoo extends VerticalLayout {
 		add(commandButton);
 
 
-/*
+
 		//binding = automatic mapping between UI-widgets and classes
 
 		TextField nameField = new TextField();
 
 		Text log = new Text("");
 
-		Person person1 = new Person();
+		Person person1 = new Person("jf", "hfh", "hfklj", "hfh");
 
 		Binder<Person> binder = new Binder<>();
 
-		binder.bind(nameField, Person::getName, Person::setName);
+		binder.bind(nameField, Person::getLastName, Person::setLastName);
 
 
 
@@ -138,7 +138,6 @@ public class WidgetZoo extends VerticalLayout {
 		add(log);
 
 		add(saveButton);
-
 
 
 		//TextArea a widget for longer texts
@@ -233,15 +232,15 @@ public class WidgetZoo extends VerticalLayout {
 
 
 
-		/*
 
+/*
 		List<Person> list = new ArrayList<>();
 
-		list.add(new Person("Peter", 35));
+		list.add(new Person("Peter", "JLKFJl", "hhjf", "hdjhf"));
 
-		box.setItemLabelGenerator(person -> person.getName() + "/" + person.getAge());
+		box.setItemLabelGenerator(person -> person.  + person.getAge());
 
-
+*/
 
 
 
@@ -249,17 +248,9 @@ public class WidgetZoo extends VerticalLayout {
 
 		List<Person> list = new ArrayList<>();
 
-		list.add(new Person("Anna", "anna@abc.com", 35));
+		list.add(new Person("Anna","hfjf" , "anna@abc.com", "hfh"));
 
-		list.add(new Person("Peter", "Peter@abc.com", 45));
-
-		list.add(new Person("Marc", "marc@abc.com", 33));
-
-		list.add(new Person("Susy", "susy@abc.com", 49));
-
-		list.add(new Person("Anna", "anna@abc.com", 35));
-
-		list.add(new Person("Peter", "Peter@abc.com", 45));
+		/*list.add(new Person("Peter", "Peter@abc.com", 45));
 
 		list.add(new Person("Marc", "marc@abc.com", 33));
 
@@ -281,15 +272,23 @@ public class WidgetZoo extends VerticalLayout {
 
 		list.add(new Person("Susy", "susy@abc.com", 49));
 
+		list.add(new Person("Anna", "anna@abc.com", 35));
+
+		list.add(new Person("Peter", "Peter@abc.com", 45));
+
+		list.add(new Person("Marc", "marc@abc.com", 33));
+
+		list.add(new Person("Susy", "susy@abc.com", 49));
+*/
 
 
 		Grid<Person> personGrid = new Grid<>(Person.class, false);
 
-		personGrid.addColumn(Person::getName).setHeader("Name").setSortable(true).setTextAlign(ColumnTextAlign.CENTER);
+		personGrid.addColumn(Person::getFirstName).setHeader("Firstname").setSortable(true).setTextAlign(ColumnTextAlign.CENTER);
 
 		personGrid.addColumn(Person::getEmail).setHeader("Emails").setSortable(true);
 
-		personGrid.addColumn(Person::getAge).setHeader("Age").setSortable(true);
+		personGrid.addColumn(Person::getLastName).setHeader("Lastname").setSortable(true);
 
 		personGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
 
@@ -322,6 +321,5 @@ public class WidgetZoo extends VerticalLayout {
 
 
 	}
-*/
+
 	}
-}

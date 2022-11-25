@@ -8,6 +8,13 @@ import javax.validation.constraints.NotNull;
 
 public class Person {
 
+	public Person(String firstName, String lastName, String email, String wohnort){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.wohnort = wohnort;
+	}
+
 
 	@NotEmpty
 	private String firstName = "";
@@ -15,7 +22,8 @@ public class Person {
 	@NotEmpty
 	private String lastName = "";
 
-
+	@NotEmpty
+	private String wohnort = "";
 
 	@Email
 	@NotEmpty
@@ -42,6 +50,13 @@ public class Person {
 		this.lastName = lastName;
 	}
 
+	public String getWohnort(){
+		return wohnort;
+	}
+
+	public void setWohnort(String wohnort){
+		this.wohnort = wohnort;
+	}
 
 	public String getEmail() {
 		return email;
