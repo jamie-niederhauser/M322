@@ -2,11 +2,13 @@ package com.example.application.views.main;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class Person {
+
+	public Person(){
+
+	}
 
 	public Person(String firstName, String lastName, String email, String wohnort){
 		this.firstName = firstName;
@@ -16,17 +18,20 @@ public class Person {
 	}
 
 
-	@NotEmpty
+	@NotBlank
+	@Size(max = 45)
 	private String firstName = "";
 
-	@NotEmpty
+	@NotBlank
+	@Size(max = 45)
 	private String lastName = "";
 
-	@NotEmpty
+	@NotBlank
+	@Size(max = 45)
 	private String wohnort = "";
 
 	@Email
-	@NotEmpty
+	@NotBlank
 	private String email = "";
 
 	@Override
