@@ -11,9 +11,6 @@ import com.vaadin.flow.router.RouterLink;
 
 
 
-@PageTitle("Main")
-
-@Route(value = "")
 
 public class MainView extends HorizontalLayout {
 

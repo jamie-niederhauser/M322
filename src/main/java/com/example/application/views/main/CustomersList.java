@@ -7,6 +7,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.swing.text.html.ListView;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @PageTitle("CustomerList")
 @Route(value = "/CustomerList")
@@ -26,8 +28,6 @@ public class CustomersList extends VerticalLayout {
 	Button add = new Button("Add");
 	Button delete = new Button("Delete");
 
-	private Person person;
-
 
 
 @Autowired
@@ -35,18 +35,20 @@ public class CustomersList extends VerticalLayout {
 	this.personService = personService;
 	setSizeFull();
 
+	add.addClickListener(e-> UI.getCurrent().navigate(AddCustomer.class));
+	add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+	delete.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
+	delete.addClickListener(e-> UI.getCurrent().navigate(DeleteView.class));
+	HorizontalLayout horizontalLayout = new HorizontalLayout(add, delete);
+
+	setHorizontalComponentAlignment(Alignment.END, horizontalLayout);
+
 		configureGrid();
 
-		add(grid, Buttons());
+		add(grid, horizontalLayout);
 	}
 
-	private Component Buttons() {
-		add.addClickListener(e-> UI.getCurrent().navigate(AddCustomer.class));
-		add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-		delete.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-		HorizontalLayout horizontalLayout = new HorizontalLayout(add, delete);
-	return horizontalLayout;
-	}
+
 
 
 
@@ -62,6 +64,14 @@ public class CustomersList extends VerticalLayout {
 		grid.setItems(personService.getPerson());
 		grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
 		grid.setSelectionMode(Grid.SelectionMode.MULTI);
+		grid.addSelectionListener(event -> {
+			Set<Person> selected = event.getAllSelectedItems();
+			personService.setToBeDeleted(selected);
+			Notification.show(selected.size() + " items selected");
+		});
 	}
+
+
+
 
 }

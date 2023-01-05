@@ -1,6 +1,7 @@
 package com.example.application.views.main;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.vaadin.flow.component.template.Id;
 
 import javax.validation.constraints.*;
 
@@ -16,6 +17,8 @@ public class Person {
 		this.email = email;
 		this.wohnort = wohnort;
 	}
+
+	@Id
 
 
 	@NotBlank

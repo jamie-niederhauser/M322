@@ -24,8 +24,8 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.shared.Registration;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@PageTitle("AddCustomer")
-@Route(value = "/AddCustomer")
+@PageTitle("Main")
+@Route(value = "")
 public class AddCustomer extends VerticalLayout {
 	private final PersonService personService;
 	Binder<Person> binder = new BeanValidationBinder<>(Person.class);
